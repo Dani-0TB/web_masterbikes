@@ -1,0 +1,14 @@
+.errorlist {
+  padding: 0;
+  margin: 0 0 3px 5px;
+  list-style: none;
+  font-size: 12px;
+}
+
+.nonfield {
+  color: inherit;
+}
+
+.errors {
+  color: rgb(255, 48, 48);
+}

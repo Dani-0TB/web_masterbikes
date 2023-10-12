@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+  Login
+{% endblock title %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'registration/styles.css' %}">
+{% endblock styles %}
+
+{% block page_title %} Iniciar Sesión {% endblock page_title %}
+{% block page_subtitle %}{% endblock page_subtitle %}
+
+{% block content %}
+  {% if form.non_field_errors %}
+  <div class="col-12 col-lg-6 mx-auto px-0">
+    <div class="alert alert-warning alert-dismissible shadow-sm" role="alert">
+      <div class="text-warning">Error al validar el formulario: {{ form.non_field_errors }} </div>
+      <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+  {% endif %}
+  <div class="row flex-fill align-items-center justify-content-center">
+    <div class="col-12 col-lg-6 p-5 bg-dark rounded-5 h-100">
+      <h2 class="text-light w-100">Ingresa tus credenciales</h2>
+      <form action="" method="POST" class="flex-fill w-100">
+        {% csrf_token %}
+          
+          {% for field in form %}
+          <span class="errors">{{ field.errors }}</span>
+          <div class="form-floating mb-3 text-secondary">
+            <input type="{{ field.widget_type }}" name="{{ field.html_name }}" id="id_{{ field.html_name }}" 
+            class="form-control" placeholder="place">
+            <label for="id_{{ field.html_name }}">{{ field.label }}</label>
+          </div>
+          {% endfor %}
+        <div class="col mt-3 d-flex">
+          <button class="btn btn-light flex-grow-1" type="submit">Ingresar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+    
+{% endblock content %}

@@ -1,0 +1,14 @@
+.bg-darker {
+  background-color: #F1EFEF;
+}
+
+.product-img {
+  max-height: 20rem;
+  object-fit: cover;
+}
+
+.product-from {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

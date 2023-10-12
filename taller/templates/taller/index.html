@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Inicio {% endblock title %}
+
+{% block page_title %}
+  Taller Cikleta
+{% endblock page_title %}
+{% block page_subtitle %}
+  Bicicletas, repuestos, pinturas y más, a tu medida
+{% endblock page_subtitle %}
+
+{% block content %}
+  <section>
+    <h1 class="display-4 fw-strong">Nuestros trabajos</h1>
+
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner rounded-4">
+        <div class="carousel-item active">
+          <img src="{% static 'imagenes/trabajos/restauracion/1.jpg' %}" class="d-block w-100 carusel-img" alt="...">
+          <div class="carousel-caption fw-bold">
+            <h1>Pintado</h1>
+            <p>Pintado completo de bicicleta</p>
+            <a href=""><button class="btn btn-danger" type="button">Ver Más</button></a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'imagenes/trabajos/restauracion/2.jpg' %}" class="d-block w-100 carusel-img" alt="...">
+          <div class="carousel-caption fw-bold">
+            <h1>Ajuste General</h1>
+            <p>Mantenimiento general de bicicleta</p>
+            <a href=""><button class="btn btn-danger" type="button">Ver Más</button></a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'imagenes/trabajos/restauracion/3.jpg' %}" class="d-block w-100 carusel-img" alt="...">
+          <div class="carousel-caption fw-bold">
+            <h1>Restauración</h1>
+            <p>Restauramos tu bicic como nueva</p>
+            <a href=""><button class="btn btn-danger" type="button">Ver Más</button></a>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="row mb-5">
+      <div class="col">
+        <h1 class="display-1">Una breve historia de nosotros</h1>
+        <p class="lead justify-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, iste fugit. Vel
+          quasi unde aspernatur deserunt quam fuga, eaque adipisci ab explicabo quia reiciendis aliquid voluptas maiores
+          dolore quo ratione inventore. Ratione quasi ex ab deserunt voluptatem repellat magni accusantium quis at
+          debitis, quisquam voluptatum voluptate consectetur perferendis libero iure cumque nihil exercitationem maxime
+          sed, nam perspiciatis nesciunt nostrum? Illum?</p>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-lg-6 col-sm-12">
+        <img class="img-fluid rounded pb-4" src="{% static 'imagenes/main.jpg' %}" alt="Imagen">
+      </div>
+      <div class="col-lg-6 col-sm-12">
+        <h4 class="display-5 fw-bold">Nuestra mision</h4>
+        <p class="fw-light justify-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, exercitationem qui.
+          Veritatis aliquam animi nam tenetur aut error optio cum. Quia accusantium odit, quo veritatis tempore labore
+          ipsam consequuntur id. Dolor sapiente beatae quaerat pariatur tenetur necessitatibus dignissimos maxime modi
+          ratione possimus qui nisi eum molestiae aspernatur quod aliquid eos ab assumenda reiciendis quos, ducimus
+          maiores. Delectus libero magnam sapiente obcaecati sed sit similique, eveniet necessitatibus culpa cum tenetur
+          perspiciatis enim, mollitia doloribus voluptas officia quod in accusamus, qui voluptate. Vero expedita
+          necessitatibus architecto mollitia explicabo, neque ut nisi ratione earum, sequi doloremque quis suscipit modi
+          tenetur iusto nihil aliquam!</p>
+      </div>
+    </div>
+  <hr class="border border-danger border-2 opacity-50">
+  </section>
+  <!--Servicios-->
+  <section>
+    <div class="row px-5 pb-5">
+      <h1 class="display d-block pb-5 text-center">Nuestros Servicios</h1>
+      <div class="col-md-6 pb-3">
+        <img class="img-fluid d-block mx-auto service-img mb-2" src="{% static 'imagenes/inicio/bike.png' %}">
+        <a href="" class="link-servicio fw-bold d-block text-center fs-1">Mantenimiento</a>
+      </div>
+      <div class="col-md-6 pb-3">
+        <img class="img-fluid d-block mx-auto service-img mb-2" src="{% static 'imagenes/inicio/spray-gun.png' %}">
+        <a href="" class="link-servicio fw-bold d-block text-center fs-1">Pintura</a>
+      </div>
+      <div class="col-lg-12 py-3">
+        <img class="img-fluid d-block mx-auto service-img mb-2" src="{% static 'imagenes/inicio/inner-tube.png' %}">
+        <a class="link-servicio fw-bold d-block text-center fs-1" href="">Repuestos</a>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
