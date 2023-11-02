@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "jest"
+    "test": "jest --no-color 2>reporte.txt"
   },
   "dependencies": {
     "jest": "^29.7.0",

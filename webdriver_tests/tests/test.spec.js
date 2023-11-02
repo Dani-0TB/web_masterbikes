@@ -4,7 +4,7 @@ let options = new Options();
 let driver = undefined;
 
 beforeAll(async () => {
-  options.windowSize({width:1500,height:800})
+  options.windowSize({width:1500,height:1000})
   driver = await new Builder()
     .forBrowser('chrome')
     .setChromeOptions(options)
@@ -86,4 +86,77 @@ describe('Pruebas de login',() => {
   });
 });
 
+describe('Pruebas CRUD de producto',() => {
+
+  let usuarioTest = {name: 'admin', pass: 'Testing321'}
+
+  let productos = [
+    {name:'Bicicleta1',precio:199990},
+    {name:'Bicicleta2',precio:""},
+    {name:'',precio:199990},
+    {name:'Bicicleta1',precio:-199990},
+    {name:'Bicicleta1',precio:199990000000},
+  ];
+  
+  let productoIndex = 0;
+  let producto = undefined;
+
+  beforeAll( async () =>{
+    
+    await driver.get('http://localhost:8000/accounts/login/');
+    await driver.findElement(By.id('id_username')).sendKeys(usuarioTest.name);
+    await driver.findElement(By.id('id_password')).sendKeys(usuarioTest.pass);
+    await driver.actions()
+      .keyDown(Key.ENTER)
+      .keyUp(Key.ENTER)
+      .perform();
+  })
+
+  beforeEach(async () => {
+    producto = productos[productoIndex];
+    await driver.get('http://localhost:8000/productos/agregar/');
+    await driver.findElement(By.id('id_nombre')).sendKeys(producto.name);
+    await driver.findElement(By.id('id_precio')).sendKeys(producto.precio);
+    const select = await driver.findElement(By.id('id_categoria'));
+    await driver.actions()
+      .click(select)
+      .keyDown(Key.DOWN)
+      .keyUp(Key.DOWN)
+      .keyDown(Key.ENTER)
+      .keyUp(Key.ENTER)
+      .keyDown(Key.TAB)
+      .keyUp(Key.TAB)
+      .keyDown(Key.TAB)
+      .keyUp(Key.TAB)
+      .keyDown(Key.ENTER)
+      .keyUp(Key.ENTER)
+      .perform();
+  });
+
+  afterEach(async () => {
+    productoIndex += 1;
+    producto = undefined
+  });
+
+  test('Agregar producto con datos válidos', async () => {
+    let productoTest = await driver.findElement(By.css('.text-success')).getText()
+    expect(productoTest).toMatch("El producto fue agregado correctamente!");
+  });
+  test('Agregar producto sin precio', async () => {
+    let productoTest = await driver.findElement((By.id('alert'))).isDisplayed()
+    expect(productoTest).toBeFalsy();
+  });
+  test('Agregar producto sin nombre', async () => {
+    let productoTest = await driver.findElement((By.id('alert'))).isDisplayed()
+    expect(productoTest).toBeFalsy();
+  });
+  test('Agregar producto con precio negativo', async () => {
+    let productoTest = await driver.findElement((By.id('alert'))).isDisplayed()
+    expect(productoTest).toBeFalsy();
+  });
+  test('Agregar producto con precio sobre 10 digitos', async () => {
+    let productoTest = await driver.findElement((By.id('alert'))).isDisplayed()
+    expect(productoTest).toBeFalsy();
+  });
+});
 
