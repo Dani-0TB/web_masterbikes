@@ -44,6 +44,7 @@ def agregar_producto(request):
     if (form.is_valid()):
       form.save()
       alert = create_alert("success", "El producto fue agregado correctamente!")
+      form = ProductFrom()
     else:
       alert = {"type":"danger", "message":"Error al agregar el producto"}
     context = {"form": form, "alert":alert}

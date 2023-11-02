@@ -18,20 +18,18 @@
 {% block content %}
 
 <div class="row p-3 p-lg-0">
-  {% if alert %}
-  <div class="col-12 col-lg-9 mx-auto px-0">
+  <div id="alert" class="col-12 col-lg-9 mx-auto px-0 {% if alert %}visible{% else %} invisible {% endif %}">
     <div class="alert alert-{{ alert.type }} alert-dismissible shadow-sm" role="alert">
       <div class="text-{{ alert.type }}">{{ alert.message }}</div>
       <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   </div>
-  {% endif %}
   <div class="col-12 col-lg-9 rounded px-5 py-4 bg-darker mx-auto shadow-sm ">
     <h3 class="text-center text-md-start">Ingrese los datos del producto</h3>
     <form method="POST">
       {% csrf_token %}
       {{ form }}
-      <button class="btn btn-success flex-grow-1 flex-md-grow-0 px-md-5" type="submit">
+      <button id="id_agregar" class="btn btn-success flex-grow-1 flex-md-grow-0 px-md-5" type="submit">
         {% if editar %}
           Editar
         {% else %}
